@@ -1,0 +1,239 @@
+
+
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>HomeWise | Your Home, Your Confidence</title>
+
+<style>
+
+:root{--blue:#244c7a;--light:#edf4fb;--green:#4e8069;--ink:#243247}
+
+*{box-sizing:border-box}
+
+body{margin:0;font-family:Arial,sans-serif;background:#f6f8fb;color:var(--ink)}
+
+header{background:var(--blue);color:white;padding:24px 20px}
+
+.brand{font-size:25px;font-weight:bold}
+
+.tagline{margin-top:7px;font-size:14px}
+
+main{max-width:760px;margin:auto;padding:20px}
+
+.hero{background:white;border-radius:18px;padding:24px;margin:4px 0 22px}
+
+.hero h1{font-size:30px;line-height:1.15;margin:0 0 12px}
+
+.hero p{line-height:1.6;color:#536276}
+
+.section-title{font-size:20px;margin:25px 0 13px}
+
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+
+.tile{background:white;border:1px solid #e0e7ef;border-radius:14px;padding:18px 14px;text-align:left;cursor:pointer;color:var(--ink);font-size:16px}
+
+.tile span{display:block;font-size:28px;margin-bottom:12px}
+
+.tile small{display:block;color:#617083;margin-top:7px;line-height:1.4}
+
+.panel{background:white;padding:20px;border-radius:15px;margin-top:20px;line-height:1.6}
+
+button.primary{background:var(--green);color:white;border:0;padding:13px 17px;border-radius:10px;font-size:15px;cursor:pointer}
+
+input,textarea,select{width:100%;padding:12px;margin:8px 0 14px;border:1px solid #ccd6e2;border-radius:9px;font:inherit}
+
+footer{text-align:center;color:#738094;padding:28px 16px;font-size:13px}
+
+.hidden{display:none}
+
+.back{border:0;background:var(--light);padding:10px 14px;border-radius:9px;margin-bottom:12px;cursor:pointer}
+
+@media(min-width:600px){.hero h1{font-size:38px}.grid{grid-template-columns:repeat(2,1fr)}}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+<div class="brand">🏡 HomeWise</div>
+
+<div class="tagline">Your home. Your confidence. Your rules.</div>
+
+</header>
+
+<main>
+
+<section id="home">
+
+<div class="hero">
+
+<h1>Feel more confident in your home.</h1>
+
+<p>Not sure what’s broken, what to do next, or whether a repair quote is fair? Start here. HomeWise helps you understand your home, one step at a time.</p>
+
+<button class="primary" onclick="showSection('help')">Get started</button>
+
+</div>
+
+<h2 class="section-title">What do you need help with?</h2>
+
+<div class="grid">
+
+<button class="tile" onclick="showSection('fix')"><span>🔧</span>Fix It<small>Understand common home problems.</small></button>
+
+<button class="tile" onclick="showSection('quote')"><span>🧾</span>Check a Quote<small>Review a repair quote before agreeing.</small></button>
+
+<button class="tile" onclick="showSection('help')"><span>💬</span>Ask for Help<small>Describe your home problem.</small></button>
+
+<button class="tile" onclick="showSection('professional')"><span>🛠️</span>Find Help<small>Learn when to call a professional.</small></button>
+
+</div>
+
+<div class="panel">
+
+<strong>New to home maintenance?</strong>
+
+<p>Start small. You don't need to know everything to make informed decisions about your home.</p>
+
+</div>
+
+</section>
+
+<section id="fix" class="hidden">
+
+<button class="back" onclick="showSection('home')">← Back home</button>
+
+<h2>Fix It: Home basics</h2>
+
+<div class="panel"><strong>🚰 Leaking tap</strong><p>Place a container underneath and note where the water is coming from. If you can safely reach the isolation valve, turn it off. Contact a plumber if the leak continues.</p></div>
+
+<div class="panel"><strong>💡 Electricity problem</strong><p>If you smell burning, see sparks, or feel a shock, keep away and seek urgent professional help. Never open electrical panels or touch exposed wires.</p></div>
+
+<div class="panel"><strong>💧 Damp wall</strong><p>Take a photo, note when the dampness appears, and check for nearby plumbing leaks. Don't paint over dampness before the cause is identified.</p></div>
+
+<div class="panel"><strong>🚪 Door won't close</strong><p>Check whether an object is blocking it and look for visibly loose hinges. Don't force the door if the frame appears damaged.</p></div>
+
+</section>
+
+<section id="quote" class="hidden">
+
+<button class="back" onclick="showSection('home')">← Back home</button>
+
+<h2>Check a repair quote</h2>
+
+<p>Enter the details to prepare questions before accepting a quote. This tool does not verify market prices.</p>
+
+<label>What work needs to be done?</label><textarea id="work" placeholder="e.g. Repair a leaking kitchen pipe"></textarea>
+
+<label>Quoted price (R)</label><input id="price" type="number" min="0" placeholder="e.g. 1500">
+
+<label>Does the quote include materials?</label><select id="materials"><option>Not sure</option><option>Yes</option><option>No</option></select>
+
+<button class="primary" onclick="checkQuote()">Review my quote</button>
+
+<div id="quoteResult" class="panel hidden"></div>
+
+</section>
+
+<section id="help" class="hidden">
+
+<button class="back" onclick="showSection('home')">← Back home</button>
+
+<h2>Tell us what's happening</h2>
+
+<p>Describe the problem and we'll help you think through safe next steps.</p>
+
+<label>Your home problem</label><textarea id="problem" placeholder="Tell us what happened, what you noticed, and when it started..."></textarea>
+
+<button class="primary" onclick="prepareHelp()">Prepare my question</button>
+
+<div id="helpResult" class="panel hidden"></div>
+
+</section>
+
+<section id="professional" class="hidden">
+
+<button class="back" onclick="showSection('home')">← Back home</button>
+
+<h2>When to call a professional</h2>
+
+<div class="panel"><strong>Electrical faults</strong><p>Use a qualified electrician for wiring, exposed cables, repeated tripping, or burning smells.</p></div>
+
+<div class="panel"><strong>Plumbing leaks</strong><p>Call a plumber for persistent leaks, burst pipes, sewage, or hidden water damage.</p></div>
+
+<div class="panel"><strong>Structural cracks</strong><p>Get a qualified building professional to assess widening cracks, sagging ceilings, or movement in walls.</p></div>
+
+<div class="panel"><strong>Safety first</strong><p>If there's immediate danger, move away from the affected area and contact the appropriate emergency service.</p></div>
+
+</section>
+
+</main>
+
+<footer>HomeWise · Practical knowledge for a more confident home.</footer>
+
+<script>
+
+function showSection(id){
+
+document.querySelectorAll('main section').forEach(s=>s.classList.add('hidden'));
+
+document.getElementById(id).classList.remove('hidden');
+
+window.scrollTo(0,0);
+
+}
+
+function checkQuote(){
+
+const work=document.getElementById('work').value.trim();
+
+const price=document.getElementById('price').value;
+
+const materials=document.getElementById('materials').value;
+
+const result=document.getElementById('quoteResult');
+
+if(!work||price===''){alert('Please enter the work description and quoted price.');return;}
+
+result.innerHTML='<strong>Your quote checklist</strong><p>Work: '+escapeText(work)+'</p><p>Quoted price: R'+Number(price).toLocaleString('en-ZA')+'</p><p>Materials included: '+materials+'</p><p>Before agreeing, ask for an itemised breakdown, labour and material costs, expected completion date, and any call-out fees. Compare at least two written quotes when practical. This checklist does not confirm whether the price is fair.</p>';
+
+result.classList.remove('hidden');
+
+}
+
+function prepareHelp(){
+
+const problem=document.getElementById('problem').value.trim();
+
+const result=document.getElementById('helpResult');
+
+if(!problem){alert('Please describe your home problem first.');return;}
+
+result.innerHTML='<strong>Your problem</strong><p>'+escapeText(problem)+'</p><p>Next steps: note when the problem started, keep away from anything unsafe, and take photos only if it is safe to do so. For electrical danger, gas leaks, major flooding, or structural instability, leave the affected area and contact an appropriate professional or emergency service.</p>';
+
+result.classList.remove('hidden');
+
+}
+
+function escapeText(text){
+
+return text.replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];});
+
+}
+
+</script>
+
+</body>
+
+</html>
