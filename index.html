@@ -3,7 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>HomeWise | Your Home, Your Confidence</title>
+<title>KhayaFix | Practical help for your home</title>
+<meta name="theme-color" content="#244c7a">
+<meta name="description" content="Practical home guidance, repair quote checklists and help finding home maintenance support in South Africa.">
 <style>
 :root{--blue:#244c7a;--light:#edf4fb;--green:#4e8069;--ink:#243247}
 *{box-sizing:border-box}
@@ -23,31 +25,46 @@ main{max-width:760px;margin:auto;padding:20px}
 .panel{background:white;padding:20px;border-radius:15px;margin-top:20px;line-height:1.6}
 button.primary{background:var(--green);color:white;border:0;padding:13px 17px;border-radius:10px;font-size:15px;cursor:pointer}
 input,textarea,select{width:100%;padding:12px;margin:8px 0 14px;border:1px solid #ccd6e2;border-radius:9px;font:inherit}
+label{font-weight:600;font-size:14px}
+.photo-preview{display:none;max-width:100%;max-height:260px;border-radius:12px;margin:0 0 14px;border:1px solid #e0e7ef}
+.small-note{font-size:13px;color:#617083}
+.featured{border:2px solid var(--green)}
 footer{text-align:center;color:#738094;padding:28px 16px;font-size:13px}
 .hidden{display:none}
 .back{border:0;background:var(--light);padding:10px 14px;border-radius:9px;margin-bottom:12px;cursor:pointer}
 .notice{background:#fff7e6;border-left:4px solid #d69b24;padding:12px;border-radius:8px}
+.category-search{margin:12px 0 18px}
+.category-list{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.category-button{background:white;border:1px solid #dce4ed;border-radius:10px;padding:11px;text-align:left;color:var(--ink);cursor:pointer}
+.category-button.active{border-color:var(--green);background:var(--light)}
+.price-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.price-card{border:1px solid #dce4ed;border-radius:13px;padding:14px;background:#fff}
+.price-card.featured{border:2px solid var(--green)}
+.action-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.action-link{display:inline-block;text-decoration:none;background:var(--blue);color:white;padding:11px 13px;border-radius:9px;font-weight:bold}
+.action-link.secondary{background:var(--light);color:var(--blue)}
+@media(max-width:420px){.category-list,.price-grid{grid-template-columns:1fr}}
 @media(min-width:600px){.hero h1{font-size:38px}.grid{grid-template-columns:repeat(2,1fr)}}
 </style>
 </head>
 <body>
 <header>
-<div class="brand">🏡 HomeWise</div>
-<div class="tagline">Your home. Your confidence. Your rules.</div>
+<div class="brand">ð¡ KhayaFix</div>
+<div class="tagline">Practical help for your home</div>
 </header>
 <main>
 <section id="home">
 <div class="hero">
 <h1>Feel more confident in your home.</h1>
-<p>Not sure what’s broken, what to do next, or whether a repair quote is fair? Start here. HomeWise helps you understand your home, one step at a time.</p>
+<p>Not sure whatâs broken, what to do next, or whether a repair quote is fair? Start here. KhayaFix helps you understand your home, one step at a time.</p>
 <button class="primary" onclick="showSection('help')">Get started</button>
 </div>
 <h2 class="section-title">What do you need help with?</h2>
 <div class="grid">
-<button class="tile" onclick="showSection('fix')"><span>🔧</span>Fix It<small>Understand common home problems.</small></button>
-<button class="tile" onclick="showSection('quote')"><span>🧾</span>Check a Quote<small>Review a repair quote before agreeing.</small></button>
-<button class="tile" onclick="showSection('help')"><span>💬</span>Ask for Help<small>Describe your home problem.</small></button>
-<button class="tile" onclick="showSection('professional')"><span>🛠️</span>Find Help<small>Learn when to call a professional.</small></button>
+<button class="tile" onclick="showSection('fix')"><span>ð§</span>Fix It<small>Understand common home problems.</small></button>
+<button class="tile" onclick="showSection('quote')"><span>ð§¾</span>Check a Quote<small>Review a repair quote before agreeing.</small></button>
+<button class="tile" onclick="showSection('help')"><span>ð¬</span>Ask for Help<small>Describe your home problem.</small></button>
+<button class="tile" onclick="showSection('professional')"><span>ð ï¸</span>Find Help<small>Learn when to call a professional.</small></button>
 </div>
 <div class="panel">
 <strong>New to home maintenance?</strong>
@@ -56,44 +73,51 @@ footer{text-align:center;color:#738094;padding:28px 16px;font-size:13px}
 </section>
 
 <section id="fix" class="hidden">
-<button class="back" onclick="showSection('home')">← Back home</button>
-<h2>Fix It: Home basics</h2>
-<div class="panel"><strong>🚰 Leaking tap</strong><p>Place a container underneath and note where the water is coming from. If you can safely reach the isolation valve, turn it off. Contact a plumber if the leak continues.</p></div>
-<div class="panel"><strong>💡 Electricity problem</strong><p>If you smell burning, see sparks, or feel a shock, keep away and seek urgent professional help. Never open electrical panels or touch exposed wires.</p></div>
-<div class="panel"><strong>💧 Damp wall</strong><p>Take a photo, note when the dampness appears, and check for nearby plumbing leaks. Don't paint over dampness before the cause is identified.</p></div>
-<div class="panel"><strong>🚪 Door won't close</strong><p>Check whether an object is blocking it and look for visibly loose hinges. Don't force the door if the frame appears damaged.</p></div>
+<button class="back" onclick="showSection('home')">â Back home</button>
+<h2>Fix It: practical home guidance</h2>
+<p>Search the 12 categories below. Choose a problem for quick first steps and safety guidance.</p>
+<label for="fixSearch">Search problems</label><input id="fixSearch" class="category-search" type="search" placeholder="e.g. leaking pipe, damp, crack..." oninput="filterFixes()">
+<div id="fixCategories" class="category-list" aria-label="Searchable home repair categories"></div>
+<div id="fixDetail" class="panel" aria-live="polite"><strong>Select a problem</strong><p>Choose a category above to see guidance.</p></div>
 </section>
 
 <section id="quote" class="hidden">
-<button class="back" onclick="showSection('home')">← Back home</button>
+<button class="back" onclick="showSection('home')">â Back home</button>
 <h2>Check a repair quote</h2>
-<p>Enter the details to prepare questions before accepting a quote. This tool does not verify market prices.</p>
+<p>Start with a free preliminary checklist. Detailed assessment options are shown below; payments are not connected yet.</p>
 <label for="work">What work needs to be done?</label><textarea id="work" placeholder="e.g. Repair a leaking kitchen pipe"></textarea>
-<label for="price">Quoted price (R)</label><input id="price" type="number" min="0" placeholder="e.g. 1500">
+<label for="price">Quoted price (R)</label><input id="price" type="number" min="0" step="0.01" placeholder="e.g. 1500">
 <label for="materials">Does the quote include materials?</label><select id="materials"><option>Not sure</option><option>Yes</option><option>No</option></select>
-<button class="primary" onclick="checkQuote()">Review my quote</button>
-<div id="quoteResult" class="panel hidden"></div>
+<button class="primary" onclick="checkQuote()">Get free preview</button>
+<div id="quoteResult" class="panel hidden" aria-live="polite"></div>
+<div class="panel"><h3>Detailed assessments</h3><p class="small-note">Proposed test pricing. A secure payment provider and detailed assessment process must be connected before launch.</p><div class="price-grid"><div class="price-card"><strong>Single assessment</strong><h2>R29</h2><p>Detailed review of one quote.</p><button class="primary" onclick="choosePlan('Single assessment â R29')">Choose single</button></div><div class="price-card featured"><strong>3-assessment bundle</strong><h2>R69</h2><p>Three detailed quote reviews.</p><button class="primary" onclick="choosePlan('3-assessment bundle â R69')">Choose bundle</button></div></div><p id="planMessage" class="notice" aria-live="polite">No payment will be taken in this prototype.</p></div>
 </section>
-
 <section id="help" class="hidden">
-<button class="back" onclick="showSection('home')">← Back home</button>
+<button class="back" onclick="showSection('home')">â Back home</button>
 <h2>Tell us what's happening</h2>
-<p>Describe the problem and we'll suggest general, safer next steps. We cannot inspect your home remotely, so advice may not identify the exact cause.</p>
+<p>Describe what is happening and, if helpful, add a photo. KhayaFix will suggest general next steps based on the details you provide. A photo preview is not an AI diagnosis, and we cannot confirm the exact cause remotely.</p>
 <label for="problem">Your home problem</label><textarea id="problem" placeholder="Tell us what happened, what you noticed, and when it started..."></textarea>
+<label for="problemPhoto">Add a photo (optional)</label><input id="problemPhoto" type="file" accept="image/*" onchange="previewProblemPhoto(event)">
+<img id="photoPreview" class="photo-preview" alt="Preview of the selected home problem photo">
+<p class="small-note">For your safety, do not approach exposed wires, gas leaks, unstable ceilings or other hazards to take a photo.</p>
 <button class="primary" onclick="prepareHelp()">Get guidance</button>
 <div id="helpResult" class="panel hidden" aria-live="polite"></div>
 </section>
 
 <section id="professional" class="hidden">
-<button class="back" onclick="showSection('home')">← Back home</button>
-<h2>When to call a professional</h2>
-<div class="panel"><strong>Electrical faults</strong><p>Use a qualified electrician for wiring, exposed cables, repeated tripping, or burning smells.</p></div>
-<div class="panel"><strong>Plumbing leaks</strong><p>Call a plumber for persistent leaks, burst pipes, sewage, or hidden water damage.</p></div>
-<div class="panel"><strong>Structural cracks</strong><p>Get a qualified building professional to assess widening cracks, sagging ceilings, or movement in walls.</p></div>
-<div class="panel"><strong>Safety first</strong><p>If there's immediate danger, move away from the affected area and contact the appropriate emergency service.</p></div>
+<button class="back" onclick="showSection('home')">â Back home</button>
+<h2>Find Help</h2>
+<div class="panel featured"><strong>GRACE E SUPPLY SOLUTIONS</strong><p><strong>In-house service option Â· Centurion and wider Gauteng</strong></p><p>For painting, cleaning, renovations, repairs and general maintenance. Please confirm service availability and scope before booking.</p><div class="action-row"><button class="primary" onclick="contactGrace('call')">Call Grace</button><button class="primary" onclick="contactGrace('whatsapp')">WhatsApp Grace</button><button class="back" onclick="document.getElementById('quoteRequestBox').classList.toggle('hidden')">Request a quote</button></div><p id="contactStatus" class="small-note" aria-live="polite">Call, WhatsApp and quote requests are connected to GRACE E SUPPLY SOLUTIONS.</p></div>
+<div id="quoteRequestBox" class="panel hidden"><h3>Request a quote</h3><label for="requestName">Your name (optional)</label><input id="requestName" placeholder="Your name"><label for="requestArea">Suburb / area</label><input id="requestArea" placeholder="e.g. Centurion"><label for="requestWork">What work do you need?</label><textarea id="requestWork" placeholder="Describe the work and preferred timeframe"></textarea><button class="primary" onclick="sendQuoteRequest()">Prepare WhatsApp quote request</button><p id="requestStatus" class="small-note" aria-live="polite"></p></div>
+<div class="panel"><strong>Electrical faults</strong><p>Use a qualified electrician for wiring, exposed cables, repeated tripping or burning smells.</p></div><div class="panel"><strong>Plumbing leaks</strong><p>Call a plumber for persistent leaks, burst pipes, sewage or hidden water damage.</p></div><div class="panel"><strong>Structural concerns</strong><p>Get a qualified building professional to assess widening cracks, sagging ceilings or wall movement.</p></div>
 </section>
 </main>
-<footer>HomeWise · Practical knowledge for a more confident home.</footer>
+<footer>
+<strong>KhayaFix Â· Practical knowledge for a more confident home.</strong>
+<p>Â© 2026 KhayaFix. All rights reserved.</p>
+<p>Developed by GRACE E SUPPLY SOLUTIONS. The original KhayaFix website content, code, branding and design are protected by applicable intellectual property laws. No unauthorised copying, reproduction, distribution or commercial reuse without prior written permission, except where permitted by law.</p>
+<p>KhayaFix is a developing product. This notice does not claim ownership over general ideas or methods.</p><p>Paid assessments require a secure payment service before public launch.</p>
+</footer>
 
 <script>
 function showSection(id){
@@ -112,6 +136,16 @@ function checkQuote(){
   result.classList.remove('hidden');
 }
 
+function previewProblemPhoto(event){
+  const file=event.target.files && event.target.files[0];
+  const preview=document.getElementById("photoPreview");
+  if(!file){preview.removeAttribute("src");preview.style.display="none";return;}
+  if(!file.type.startsWith("image/")){alert("Please choose an image file.");event.target.value="";preview.removeAttribute("src");preview.style.display="none";return;}
+  const reader=new FileReader();
+  reader.onload=function(){preview.src=reader.result;preview.style.display="block";};
+  reader.readAsDataURL(file);
+}
+
 function prepareHelp(){
   const problem=document.getElementById('problem').value.trim();
   const result=document.getElementById('helpResult');
@@ -123,7 +157,7 @@ function prepareHelp(){
 
   // Emergency warnings take priority over ordinary troubleshooting.
   if(/gas smell|smell of gas|gas leak|sparks|electric shock|burning smell|exposed wire|live wire/.test(p)){
-    heading='Safety first — possible immediate danger';
+    heading='Safety first â possible immediate danger';
     advice='Move away from the affected area. Do not touch exposed wires, electrical equipment, or anything that may be leaking gas. If a gas leak is possible, avoid flames and do not operate electrical switches nearby. Contact the relevant emergency service or a qualified professional from a safe location.';
   } else if(/flood|major leak|burst pipe|water everywhere|sewage|toilet overflow|overflowing toilet/.test(p)){
     heading='Possible flooding or serious leak';
@@ -131,7 +165,7 @@ function prepareHelp(){
   } else if(/toilet|flush|cistern/.test(p)){
     heading='Toilet or flush mechanism';
     if(/handle|button|stays up|stuck|won't return|wont return|doesn't go down|does not go down|noise|noisy|sound/.test(p)){
-      advice='This may be a sticking flush handle/button or a problem with the cistern’s return mechanism. If the toilet is not overflowing, avoid repeatedly flushing it. If the cistern lid lifts off easily, you may carefully look for a visibly stuck handle or mechanism without putting your hands into moving parts; do not force or dismantle anything. If water keeps running, use the shut-off valve only if you can safely identify and operate it. If the noise or sticking continues, ask a plumber to inspect the flush mechanism.';
+      advice='This may be a sticking flush handle/button or a problem with the cisternâs return mechanism. If the toilet is not overflowing, avoid repeatedly flushing it. If the cistern lid lifts off easily, you may carefully look for a visibly stuck handle or mechanism without putting your hands into moving parts; do not force or dismantle anything. If water keeps running, use the shut-off valve only if you can safely identify and operate it. If the noise or sticking continues, ask a plumber to inspect the flush mechanism.';
     } else if(/leak|leaking|drip|water/.test(p)){
       advice='Check from a safe, dry position whether water is coming from the cistern, the supply pipe, or around the toilet base. Avoid touching water near electrical equipment. If water is spreading, use the shut-off valve only if safe and contact a plumber. Do not remove the toilet yourself.';
     } else {
@@ -139,7 +173,7 @@ function prepareHelp(){
     }
   } else if(/tap|faucet/.test(p) && /leak|drip|dripping|water/.test(p)){
     heading='Leaking tap';
-    advice='Place a container underneath if useful and note whether the water comes from the spout or around the handle. If you can safely identify the tap’s isolation valve, turn it off. Do not force a stiff valve. If the leak continues or the valve is inaccessible, contact a plumber.';
+    advice='Place a container underneath if useful and note whether the water comes from the spout or around the handle. If you can safely identify the tapâs isolation valve, turn it off. Do not force a stiff valve. If the leak continues or the valve is inaccessible, contact a plumber.';
   } else if(/blocked drain|drain blocked|blocked sink|slow drain|clogged drain/.test(p)){
     heading='Blocked drain';
     advice='Stop adding water if the drain is backing up. Avoid mixing drain-cleaning chemicals or using them after another chemical has been used. If sewage is backing up, keep away from it and call a plumber. For a persistent blockage, get professional help rather than forcing tools into the pipe.';
@@ -160,6 +194,37 @@ function prepareHelp(){
   result.innerHTML='<strong>'+escapeText(heading)+'</strong><p><strong>Your problem:</strong> '+escapeText(problem)+'</p><p>'+escapeText(advice)+'</p><p class="notice"><strong>Important:</strong> This is general guidance, not a confirmed diagnosis. If you feel unsafe or the problem is getting worse, stop and contact a qualified professional.</p>';
   result.classList.remove('hidden');
 }
+
+// Add the business phone number in international format, digits only, before publishing (South Africa: 27...)
+const GRACE_PHONE = '27680743710';
+const fixData = [
+{name:'Leaking tap',icon:'ð°',intro:'A drip may come from a worn washer or cartridge.',steps:['Place a container under the drip if useful.','Notice whether it leaks from the spout or handle.','Turn off the local valve only if you can identify it safely; do not force it.'],warning:'If the leak continues or the valve is stuck, contact a plumber.'},
+{name:'Leaking pipe',icon:'ð§',intro:'Reduce water damage first.',steps:['Keep people away from slippery floors.','Turn off the water supply only if you can safely reach the valve.','Take a photo from a dry, safe position.'],warning:'Never touch electrical switches or appliances in a wet area.'},
+{name:'Damp wall or mould',icon:'ð§±',intro:'Damp may be caused by leaks, rain penetration or condensation.',steps:['Note when the damp appears and whether it worsens after rain.','Move furniture away and ventilate if safe.','Take a photo and look for visible leaks without opening the wall.'],warning:'Do not paint over dampness before finding the cause. Avoid disturbing extensive mould.'},
+{name:'Door not closing',icon:'ðª',intro:'A door may stick because of loose hinges, swelling or a shifted frame.',steps:['Check for an obstruction.','Look for visibly loose hinges without forcing the door.','Note where the door rubs.'],warning:'If the frame is cracked or the door is unstable, keep clear and seek help.'},
+{name:'Blocked drain',icon:'ð',intro:'A slow drain may be a local blockage or a wider drainage issue.',steps:['Stop adding water if the drain is backing up.','Remove only visible debris that is easy and safe to reach.','Note whether one or several drains are affected.'],warning:'Never mix drain chemicals. Keep away from sewage and call a plumber if wastewater backs up.'},
+{name:'Roof or ceiling leak',icon:'ð ',intro:'Protect people and belongings without climbing onto a roof.',steps:['Move belongings away if safe.','Use a container under a small drip only if the ceiling is stable and there is no electrical hazard.','Photograph the stain from a safe position.'],warning:'Do not climb onto a wet roof or stand under a sagging ceiling.'},
+{name:'Electrical problem',icon:'ð¡',intro:'Electrical faults can cause serious injury or fire.',steps:['Keep away from exposed wires, sparks, wet switches or damaged appliances.','Keep children and pets away.','Contact a qualified electrician from a safe location.'],warning:'Do not attempt DIY electrical repairs. If there is smoke or fire, move away and contact emergency services.'},
+{name:'Peeling paint',icon:'ð¨',intro:'Peeling can signal moisture, poor preparation or an ageing coating.',steps:['Check whether the surface is damp.','Photograph the area and note whether it is indoors or outdoors.','Resolve moisture before repainting.'],warning:'Avoid sanding old paint until you know what it contains; older paint may contain lead.'},
+{name:'Paving problem',icon:'ð§±',intro:'Uneven paving may indicate base or drainage problems.',steps:['Mark or avoid trip hazards.','Photograph the area close up and from a distance.','Note whether water pools there after rain.'],warning:'Do not dig near buried services without checking their location.'},
+{name:'Toilet keeps running',icon:'ð½',intro:'A running toilet may have a faulty fill valve or flush seal.',steps:['Notice whether water continues running after flushing.','Do not force the cistern lid or fittings.','If overflowing, use the shut-off valve only if you can safely identify it.'],warning:'Ceramic lids break easily. Call a plumber if the water will not stop.'},
+{name:'Cracked wall',icon:'ðï¸',intro:'Some cracks are cosmetic, but widening or stepped cracks may be serious.',steps:['Take a photo with a ruler or coin for scale.','Note whether the crack is growing or near a door or window.','Watch for sticking doors or water ingress.'],warning:'If a wall is bulging or moving, leave the area and seek urgent professional help.'},
+{name:'General maintenance',icon:'ð§°',intro:'A clear description helps determine the next step.',steps:['Describe what is wrong and where.','Take photos from a safe distance.','Note when it started and whether it is getting worse.'],warning:'If you are unsure whether a repair is safe, do not attempt it; ask a qualified professional.'}
+];
+let selectedFixIndex = 0;
+function renderFixes(query=''){
+ const list=document.getElementById('fixCategories'); list.innerHTML='';
+ const q=query.trim().toLowerCase(); let matches=0;
+ fixData.forEach((f,i)=>{const text=[f.name,f.intro,...f.steps,f.warning].join(' ').toLowerCase();if(q&&!text.includes(q))return;matches++;const b=document.createElement('button');b.className='category-button'+(i===selectedFixIndex?' active':'');b.textContent=f.icon+' '+f.name;b.onclick=()=>showFix(i);list.appendChild(b);});
+ if(!matches)list.innerHTML='<p>No matching problem found. Try another word or use Ask for Help to describe it in your own words.</p>';
+}
+function showFix(i){selectedFixIndex=i;const f=fixData[i];const detail=document.getElementById('fixDetail');detail.innerHTML='<strong>'+escapeText(f.icon+' '+f.name)+'</strong><p>'+escapeText(f.intro)+'</p><ol>'+f.steps.map(x=>'<li>'+escapeText(x)+'</li>').join('')+'</ol><p class="notice"><strong>Safety:</strong> '+escapeText(f.warning)+'</p>';renderFixes(document.getElementById('fixSearch').value);}
+function filterFixes(){renderFixes(document.getElementById('fixSearch').value);}
+renderFixes();showFix(0);
+function choosePlan(plan){document.getElementById('planMessage').textContent='Selected: '+plan+'. This is a prototype: payment is not connected, so no charge has been made.';}
+function normalizedPhone(){return GRACE_PHONE.replace(/\D/g,'');}
+function contactGrace(channel){const phone=normalizedPhone();const status=document.getElementById('contactStatus');if(!phone){status.textContent='The business contact number is not configured correctly. Please contact KhayaFix support.';return;}if(channel==='call'){window.location.href='tel:+'+phone;}else{window.open('https://wa.me/'+phone,'_blank','noopener');}}
+function sendQuoteRequest(){const name=document.getElementById('requestName').value.trim(),area=document.getElementById('requestArea').value.trim(),work=document.getElementById('requestWork').value.trim(),status=document.getElementById('requestStatus');if(!area||!work){status.textContent='Please enter your area and describe the work.';return;}const msg='Hello GRACE E SUPPLY SOLUTIONS,\n'+(name?'My name is '+name+'.\n':'')+'I am based in '+area+'.\nI would like a quote for: '+work+'\nPlease let me know what information or photos you need. Thank you.';const phone=normalizedPhone();if(!phone){status.textContent='Your quote request is ready, but WhatsApp could not be opened. Message: '+msg;return;}window.open('https://wa.me/'+phone+'?text='+encodeURIComponent(msg),'_blank','noopener');status.textContent='Opening WhatsApp with your prepared quote request.';}
 
 function escapeText(text){
   return text.replace(/[&<>"']/g,function(c){
